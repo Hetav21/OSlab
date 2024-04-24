@@ -1,0 +1,76 @@
+Prac: 2
+1. What is unix shell script
+2. What is env. variable
+3. Why we need
+4. Command:
+    01. printenv: 
+        	Details, Syntax, Example, Output
+    02. printenv PATH
+    03. set
+    04. env <var-name>="<String: Name + Roll No>"
+    05. cal => cal -3 => cal -y => man cal => : ONE SS for both(cal and cal -3), ADD Attributes Table for cal command
+    06. help
+    07. pwd
+    08. tty
+    09. stty
+    10. whoami
+    11. history
+    12. uname
+    13. date => date +%V => date +%a => date +%A => date +%b => date +%B => date +%T: ONE SS for all of them
+    14. passwd
+    15. mkdir Hetav01 => mkdir Hetav001 => mkdir Hetav0001 => printenv PATH
+    16. ls 
+    17. cd Hetav01 => pwd => cd ..
+    18. rmdir Hetav01 => rmdir * => rm *
+    19. cat > NameRollno.txt
+    	Hello,
+    	Name: Hetav Shah
+    	Roll No: 198
+    	Mobile No: 8780031872
+    	
+    	ls
+    	cat NameRollno.txt
+    20. CREATE new FILE: contains: Hello: name.txt
+    	ls
+    	cat name.txt
+    	rm A.txt
+    	ls
+    21. cat > Hetav.txt
+    	Hi
+    	cp Hetav198.txt Hetav.txt
+    	cat > Hetav198.txt
+    	paste Hetav198.txt Hetav.txt
+    	paste -s Hetav198.txt Hetav.txt
+    22. mv -i Hetav.txt Shah.txt
+    23. ADD CONTENTS: Hetav198.txt: 
+    	Hetav Shah
+    	Varun Thacker
+    	Aditya Singh
+    	nl Hetav198.txt
+    24. cut -c1 Hetav198.txt
+    	cut -c2 Hetav198.txt
+    25. more -2 Hetav198.txt
+    26. cmp Hetav198.txt Shah.txt
+    27. comm Hetav198.txt Shah.txt
+    28. diff Hetav198.txt Shah.txt
+    29. file Hetav198.txt
+    30. ADD Contents: Hetav198.txt: more than 10 lines:
+    	head Hetav198.txt
+    	head -n2 Hetav198.txt
+    	tail Hetav198.txt
+    	tail -n2 Hetav198.txt
+    31.	sort Hetav198.txt
+    	sort -r Hetav198.txt
+    32. find H*
+    33. cat > A.txt
+    	uniq A.txt
+    34. cat Hetav198.txt | tr "[a-z]" "[A-Z]"
+    	cat Hetav198.txt | tr "[:upper]" "[:lower]"
+    35. wc -w Hetav198.txt
+    36. cat Hetav198.txt | head -5 | tail -2
+    37. cat Hetav198.txt | tail -5 | head -2
+    38. grep "Hetav" Hetav198.txt
+    	grep -i "Hetav" Hetav198.txt
+    	egrp "He" Hetav198.txt
+    
+Conclusion, Sign and Date: ADD to prac 2 and ....

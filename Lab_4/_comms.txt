@@ -1,0 +1,58 @@
+1. CREATE name.sh file
+   EDIT Contains:
+   
+   echo "Name: Hetav Shah"
+   echo "Roll no: 198"
+   echo "Enter subject 1 marks: "
+   read s1
+   read -p "Enter subject 2 marks: " s2
+   echo "Enter subject 3 marls: "
+   read s3
+   total=$[s1+s2+s3]
+   echo "Total marks = $total"
+   p=$[total/3]
+   echo "Pr = $p%"
+   if [ $p -ge 100 ]
+   then
+   	echo "WAH BETE!!"  
+   elif [ $p -ge 80 ]&&[ $p -le 100 ]
+   then
+   	echo "Distinction"
+   elif [ $p -le 79 ]&&[ $p -ge 60 ]
+   then
+   	echo "First Class"
+   elif [ $p -le 59]&&[ $p -ge 40 ]
+   then
+   	echo "Second Class"
+   else
+   	echo "Fail"
+   fi
+   
+2. CREATE gr8r.sh: Compare 2 nums and find larger
+
+echo "Enter num1: "
+read num1;
+echo "Enter num2: "
+read num2;
+echo "Enter num3: "
+read num3;
+if [ $num1 -ge $num2 ]
+then 
+    if [ $num1 -ge $num3 ]
+    then
+        gr8r=$num1
+    else
+        gr8r=$num3
+    fi
+elif [ $num1 -le $num2 ]
+then
+    if [ $num2 -ge $num3 ]
+    then
+        gr8r=$num2
+    else
+        gr8r=$num3
+    fi
+fi
+echo "gr8r number is $gr8r"
+
+3. 

@@ -90,7 +90,8 @@ public:
 			}
 		}
 
-		totalCt = v[n - 1][3];
+		v[i][3] -= cs;
+		totalCt = v[i - 1][3];
 	}
 
 	void display(vector<vector<int>>v) {
@@ -121,6 +122,11 @@ public:
 };
 
 int main() {
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+
 	int n;
 	cout << "Enter the number of processes: ";
 	cin >> n;

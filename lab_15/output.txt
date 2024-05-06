@@ -1,10 +1,27 @@
+Enter the number of processes: 
+Enter AT of process 1 : Enter BT of process 1 : Enter AT of process 2 : Enter BT of process 2 : Enter AT of process 3 : Enter BT of process 3 : Enter AT of process 4 : Enter BT of process 4 : Enter AT of process 5 : Enter BT of process 5 : Enter AT of process 6 : Enter BT of process 6 : Enter AT of process 7 : Enter BT of process 7 : 
+Enter the quantum time: 
+Enter the context switch: 
 
 
-
+---------------------------------------------------------------------------------
+|PID	|Arrival	|Burst	|Completion	|TurnAround	|Waiting	|
+---------------------------------------------------------------------------------
 |0	|0		|3	|3		|3		|0		|
-|1	|2		|5	|18		|16		|11		|
-|2	|1		|4	|7		|6		|2		|
-|3	|4		|2	|13		|9		|7		|
-|4	|6		|9	|27		|21		|12		|
-|5	|5		|4	|11		|6		|2		|
-|6	|7		|10	|37		|30		|20		|
+|1	|2		|2	|19		|17		|15		|
+|2	|5		|6	|49		|44		|38		|
+|3	|1		|4	|12		|11		|7		|
+|4	|3		|4	|38		|35		|31		|
+|5	|2		|5	|29		|27		|22		|
+|6	|6		|9	|63		|57		|48		|
+---------------------------------------------------------------------------------
+
+
+RESULT: 
+
+The average Weighting Time is 23 units
+
+The average Turn Around Time is 27.7143 units
+
+The average Completion Time is 7 units
+

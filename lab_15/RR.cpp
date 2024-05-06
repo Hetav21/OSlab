@@ -115,17 +115,17 @@ public:
 		cout << "---------------------------------------------------------------------------------" << endl;
 
 		cout << "\n\nRESULT: " << endl << endl;
-		cout << "The average Weighting Time is " << totalWt / n << " units" << endl << endl;
+		cout << "The average Waiting Time is " << totalWt / n << " units" << endl << endl;
 		cout << "The average Turn Around Time is " << totalTat / n << " units" << endl << endl;
 		cout << "The average Completion Time is " << totalCt / n << " units" << endl << endl;
 	}
 };
 
 int main() {
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
+// #ifndef ONLINE_JUDGE
+//   	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+// #endif
 
 	int n;
 	cout << "Enter the number of processes: ";

@@ -16,6 +16,9 @@ public:
 
 	set <int> currentFrame;
 
+	map <int, int> freq;
+	// index->freq
+
 	void setRefStrings(){
 		for (int i = 0; i < n; ++i)
 		{
@@ -23,6 +26,7 @@ public:
 			int x = 0;
 			cin >> x;
 			refStrings.push_back(x);
+			freq[x] = 0;
 		}
 	}
 
@@ -34,11 +38,11 @@ public:
 		cout << endl << endl;
 	}
 
-	void FIFO(vector<vector<int>> &v, vector<int> &r){
-		int itr = 0; // Iterates the First In
-		int itrElement = 0;
-
+	void LFU(vector<vector<int>> &v, vector<int> &r){
 		int i = 0;
+		int lowestFreq = INT_MAX;
+
+		vector <int> isVisited(n, 0);
 
 		while(i < n){ 
 			int elementFromRefString = refStrings[i];
@@ -46,33 +50,80 @@ public:
 			if(currentFrame.find(elementFromRefString) != currentFrame.end()){
 				// Hit
 				r[i] = true;
+				lowestFreq = ++freq[elementFromRefString];
+				for (auto itr : currentFrame)
+				{
+					lowestFreq = min(lowestFreq, freq[itr]);
+				}
+					
 				for (int j = 0; j < nFrame; ++j)
 				{
 					v[j][i] = v[j][i - 1];
 				}
 			} else {
-				// Fault
-				if(i + 1 > nFrame) {
-					itrElement = v[itr][i - 1];
-					currentFrame.erase(itrElement);
+				// Fault:
+				// Least Frequently used gets removed
+				// if tied then fifo
+				if (currentFrame.size() < nFrame) {
+					currentFrame.insert(elementFromRefString);
+					lowestFreq = min(lowestFreq, ++freq[elementFromRefString]);
+					for (int j = 0; j < currentFrame.size(); ++j)
+					{
+						v[j][i] = v[j][i - 1];
+					}
+					v[currentFrame.size() - 1][i] = elementFromRefString;
 				}
-				currentFrame.insert(elementFromRefString);
 
-				for (int j = 0; j < nFrame; ++j)
-				{
-					v[j][i] = v[j][i - 1];
-					if(j == itr) v[j][i] = elementFromRefString;
+				else {	
+					set <int> s = currentFrame;
+
+					int j = 0;
+					int k = 0;
+					for (auto itr : freq)
+					{	
+						if(itr.second == lowestFreq) j = k;
+						if(itr.second > lowestFreq) {
+							s.erase(itr.first);
+						}
+						k++;
+					}
+
+					int ele = *s.begin();
+
+					if(s.size() > 1){
+						for (j = 0; j <= i; ++j)
+						{
+							if(isVisited[j] == 1) continue;
+							if(s.find(refStrings[j]) != s.end()){
+								ele = refStrings[j];
+								break;
+							}
+						}
+					}
+
+					currentFrame.erase(ele);
+					freq[ele] = 0;
+					isVisited[j] = 1;
+					currentFrame.insert(elementFromRefString);
+					lowestFreq = ++freq[elementFromRefString];
+					for (auto itr : currentFrame)
+					{
+						lowestFreq = min(lowestFreq, freq[itr]);
+					}
+						
+					for (int j = 0; j < nFrame; ++j)
+					{
+						v[j][i] = v[j][i - 1];
+						if(v[j][i - 1] == ele) v[j][i] = elementFromRefString;
+					}
 				}
-
-				itr++;
-				if(itr >= nFrame) itr = 0;
 			}
 
 			i++;
 		}
 	}
 
-		void display(vector<vector<int>> &v, vector<int> &r) {
+	void display(vector<vector<int>> &v, vector<int> &r) {
 		int nHit = 0;
 
 		cout << "---------------------------------------------------" << endl;
@@ -136,18 +187,20 @@ int main() {
 	f.setRefStrings();
 	// f.getRefStrings();
 
-	f.FIFO(v, r);
+	f.LFU(v, r);
 
 	f.display(v, r);
 
 	return 0;
 }
 
+
+// Test Case: 
 // 3
 // 15
 // 7
 // 0
-// 1 
+// 1
 // 2 
 // 0 
 // 3 
@@ -157,22 +210,6 @@ int main() {
 // 3 
 // 0 
 // 3 
+// 2
 // 1 
-// 2 
-// 0
-
-// *   	7 	
-// *   	7 	0 	
-// *   	7 	0 	1 	
-// *   	2 	0 	1 	
-// HIT 	2 	0 	1 	
-// *   	2 	3 	1 	
-// *   	2 	3 	0 	
-// *   	4 	3 	0 	
-// *   	4 	2 	0 	
-// *   	4 	2 	3 	
-// *   	0 	2 	3 	
-// HIT 	0 	2 	3 	
-// *   	0 	1 	3 	
-// *   	0 	1 	2 	
-// HIT 	0 	1 	2 	
+// 2
